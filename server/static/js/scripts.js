@@ -49,4 +49,4 @@ setInterval(() => {
     webSocket.send(JSON.stringify({
         "message": code,
     }))
-    }, 60000);
+    }, 10000);
