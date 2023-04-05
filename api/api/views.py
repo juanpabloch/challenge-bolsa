@@ -10,8 +10,8 @@ from api.forms import ProductsForm, ProductsUpdateForm
 # Create your views here.
 
 def index(request):
-    """pagina inicial para api puedo poner docu de swagger o la que use en el curso utn"""
-    pass
+    """pagina inicial para api"""
+    return JsonResponse({"status": 'success', "message": "welcome to the api"}, safe=False)
 
 
 def get_all(request):
@@ -59,20 +59,3 @@ def get_one(request, product_code):
     # GET
     response = model_to_dict(product.first())
     return JsonResponse(response, safe=False)
-        
-
-def update(request, product_code):
-    form = ProductsUpdateForm(request.POST or None)
-    product = Products.objects.filter(code=product_code)
-    if not product:
-        return JsonResponse({"status": True, "message": "The product with that code does not exist"}, safe=False)
-    
-    if form.is_valid():
-        update = product.update(buy=request.POST.get("buy"), sell=request.POST.get("sell"))
-        if update:
-            new_product = Products.objects.filter(code=product_code)
-            return JsonResponse(new_product, safe=False)
-        else:
-            return JsonResponse({"status": True, "message": "Error updating data"}, safe=False)
-    else:
-        return JsonResponse({"status": True, "message": "Invalid Data"}, safe=False)
