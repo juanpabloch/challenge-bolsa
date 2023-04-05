@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Chat App</h1>
+    
+    <p>
+        instalar: pip install daphne <br>
+        en settings.py agregar daphne primero en install apps
+    </p>
+
+
+    <form action="" method="post" id='form'>
+        {% csrf_token %}
+        <input type="text" name="message">
+
+    </form>
+
+    <div id='messages'>
+
+    </div>
+{% endblock content %}
+
+{% block script %}
+    <script type="text/javascript">
+            
+        let url = `ws://${window.location.host}/ws/socket-server/`
+
+        const chatSocket = new WebSocket(url)
+        chatSocket.onmessage = function(e){
+            let data = JSON.parse(e.data)
+            console.log('Data: ', data)
+
+            if(data.type === 'chat'){
+                let messages = document.querySelector('#messages')
+                messages.insertAdjacentHTML('beforeend', `<div>
+                    <p>${data.message}</p>
+                </div>`)
+            }
+        }
+
+        let form = document.querySelector('#form')
+        form.addEventListener('submit', (e)=>{
+            e.preventDefault()
+            let message = e.target.message.value
+            chatSocket.send(JSON.stringify({
+                'message': message
+            }))
+
+            form.reset()
+        })
+    </script>
+{% endblock script %}
