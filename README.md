@@ -4,8 +4,7 @@
 * se utilizo sqlite que viene por defecto en django
 <br><br>
 Creamos una carpeta para colocar el proyecto <br><br>
-Creamos un ambiente virtual con: `python -m venv VENV` <br><br>
-Activamos el ambiente virtual con: `.\VENV\Scripts\activate` <br><br>
+Creamos un ambiente virtual y lo activamos con el comando: `python -m venv VENV && .\VENV\Scripts\activate` <br><br>
 Clonamos el repositorio <br><br>
 Ingresamos a la carpeta challenge-bolsa <br><br>
 Ejecutamos: `pip install -r requirements.txt` <br><br>
