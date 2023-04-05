@@ -1,15 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-    <h1>Products</h1>
+<div class="container text-center mt-5">
+    <h1>Productos</h1>
     <div class="products_list">
         {% if products %}
-            {% for product  in products %}
-            <a href="{% url 'product' product_code=product.code %}">{{product.code}}</a>
-            {% endfor %}
+                <table class="table table-hover mt-4" id='table_products'>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Código</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product  in products %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td class="product_code">{{product.code}}</td>
+                                <td>{{product.description}}</td>
+                                <td><a href="{% url 'product' product_code=product.code %}" class="">> VER</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
         {% else %}
-            <h2>No products</h2>
+            <h3 class="mt-5">No hay productos para mostrar</h3>
         {% endif %}
     </div>
 </div>

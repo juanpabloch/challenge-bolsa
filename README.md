@@ -28,14 +28,15 @@ Luego: python manage.py runserver <br><br>
 
 <br>
 
-Los precios de los productos se van a actualizar cada 10 segundos, utilizamos la libreria `apscheduler`
+Los precios de los productos se van a actualizar cada 60 segundos, utilizamos la libreria `apscheduler`
 se encuentra en `services/updater.py`
 
 Ahora vamos a ejecutar el servidor
 
-En una nueva consola entramos a la carpeta servidor 
+En una nueva consola entramos a la carpeta servidor
+Creamos el archivo .env con la variable: `SECRET_KEY=` <br><br> 
 y ejecutamos: `python manage.py makemigrations && python manage.py migrate`<br><br>
 Luego: `python manage.py runserver`<br><br>
 Ingresamos en el navegador a la direccion: `http://127.0.0.1:8000/`<br><br>
 Nos va a mostrar una lista de productos, 
-podemos ingresar y ver un producto en particular el mismo se va a actualizar cada 10 segundos mediente un websocket
+podemos ingresar y ver un producto en particular el mismo se va a actualizar cada 60 segundos mediente un websocket

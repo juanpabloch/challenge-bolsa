@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: #008D8F;
+}
+a:hover{
+    color: #004c4e;
+}
+
+h1{
+    color: #0A0A0A;
+    font-size: 50px;
+    line-height: 70px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+h3{
+    color: #839097;
+    font-size: 20px;
+}
+
+#table_products{
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+#table_products th{
+    color:#008D8F;
+}
+
+
+.product_code{
+    font-weight: 700;
+}
+
+/* cards */
+#card_info{
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.card_price{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+    .card_price h4{
+        color: #00393ac0;
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+.btn-container{
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+#volver-btn{
+    text-decoration: none;
+    color: #008D8F;
+    font-size: 15px;
+    letter-spacing: 1px;
+    transition: all 0.5s ease;
+}
+
+#volver-btn:hover{
+    color: #004c4e;
+}
+
+
+.card-header{
+    background-color: #008d8f3d;
+    color: #00393a;
+}
+
+.card-text{
+    color: #839097;
+    font-size: 18px;
+}
+
+.card_price p{
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #0A0A0A;
+    font-weight: 300;
+}
+
+.card_price span{
+    font-size: 19px;
+    letter-spacing: 1px;
+    color: #004c4e;
+    font-weight: 600;
+}
+/* <div class="card" id="card_info">
+            <h5 class="card-header">${data.message.code}</h5>
+            <div class="card-body text-center">
+            <p class="card-text mb-4">${data.message.description}</p>
+            <div class="card_price">
+                    <div>
+                        <h4>Venta</h4>
+                        <p>$${data.message.sell}</p>
+                    </div>
+                    <div>
+                        <h4>Compra</h4>
+                        <p>$${data.message.buy}</p>
+                    </div>
+            </div>
+            </div>
+        </div> */

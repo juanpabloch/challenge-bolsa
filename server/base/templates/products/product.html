@@ -1,62 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <div class="container">
-    <div id='product_info' class="product">
+    <div id='product_info' class="product mt-5">
         
     </div>
 
-    <a href="{% url 'products' %}">Volver</a>
+    
+
+    <div class="text-end btn-container">
+        <a href="{% url 'products' %}" id="volver-btn" class="text-rigth">Volver <</a>
+    </div>
 </div>
 {% endblock content %}
 
 
 {% block scripts %}
-<script type="text/javascript">
-
-        let code = "{{product_code}}"
-            
-        let url = `ws://${window.location.host}/ws/socket-server/api/`
-
-        const webSocket = new WebSocket(url)
-
-        webSocket.onopen = function(e){
-            webSocket.send(JSON.stringify({
-                "message": code,
-            }))
-        }
-       
-        webSocket.onmessage = function(e){
-            let data = JSON.parse(e.data)
-            console.log('Data: ', data)
-
-            if(data.type === 'product'){
-                let messages = document.querySelector('#product_info')
-                messages.innerHTML = ''
-                messages.insertAdjacentHTML('beforeend', `
-                    <div class='code'>
-                        <p>${data.message.code}</p>
-                        <p>${data.message.description}</p>
-                    </div>
-                    <div class='info'>
-                        <p>Compra</p>
-                        <p>${data.message.buy}</p>
-                        <p>Venta</p>
-                        <p>${data.message.sell}</p>
-                    </div>
-                `)
-            }
-        }
-
-        webSocket.onclose = function(e){
-            console.info('webSocket close')
-        }
-        
-        setInterval(() => {
-            webSocket.send(JSON.stringify({
-                "message": code,
-            }))
-          }, 10000);
-
-    </script>
+<script>
+    let code = "{{product_code}}"
+</script>
+<script src="{% static 'js/scripts.js' %}"></script>
 {% endblock scripts %}
