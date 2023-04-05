@@ -8,7 +8,7 @@ def lobby(request):
 
 
 def products_api(request):
-    url = 'http://127.0.0.1:8001/api/products/'
+    url = 'http://127.0.0.1:8001/products/'
     products = {}
     
     try:
